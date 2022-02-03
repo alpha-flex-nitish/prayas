@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n, y, l, m, s, i, j;
+    float ans;
+    cin >> n;
+    vector<int> x;
+    vector<int> a;
+    vector<int> b;
+    for(i=0;i<n;i++){
+        cin >> y >> l >> m;
+        x.push_back(y);
+        a.push_back(l);
+        b.push_back(m);
+    }
+    for(i=0;i<n;i++){
+        ans = (float)(x[i]*b[i])/a[i];
+            //cout << ans << endl;
+        int ansint = (int)ans;
+            //cout << ans << endl;
+            //cout << ansint << endl;
+        s = 0;
+        if(ans-ansint==0){
+            for(j=1;j<=sqrt(ansint);j++){
+                if(ansint%j==0){
+                    if(j==ansint/j){
+                        s = s + j;
+                        //cout << j << " ";
+                    }
+                    else{
+                        s = s + ansint/j + j;
+                        //cout << j << " " << ansint/j << " ";
+                    }
+                }
+                else{
+                    j+=0;
+                }
+            }
+            //cout << "s = " << s << endl;
+            if(s==x[i]){
+                cout << ans << endl;
+            }
+            else{
+                cout << "-1" << endl;
+            }
+        }
+        else{
+            cout << "-1" << endl;
+        }
+    }
+    return 0;
+}
